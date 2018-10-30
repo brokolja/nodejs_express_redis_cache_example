@@ -1,6 +1,8 @@
 var express = require('express');
 var app = express();
-var cache = require('express-redis-cache')({ expire: 60 });
+var cache = require('express-redis-cache')({
+  host: REDIS_HOST || "localhost", port: REDIS_PORT || 6379, expire: 60
+  });
 
 cache.on('message', function (message) {
   console.log("cache messege: ",message)
